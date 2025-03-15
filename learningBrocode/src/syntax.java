@@ -30,6 +30,9 @@ public class syntax {
         String user=scanner.nextLine();
         System.out.println("Hi "+user);
         int time=scanner.nextInt();
+        scanner.nextLine();
+        //this will clear the input buffer or gonna glitch
+
         System.out.println("So u are "+String.valueOf(time)+" years old");
         //one scanner object to type them all
         // scanner.next to get specific inputs
