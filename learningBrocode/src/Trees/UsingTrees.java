@@ -22,12 +22,17 @@ public class UsingTrees {
         tree.insert(10);
         tree.insert(14);
         /*
-        *       8
+                8
               /   \
              4     12
             / \    /  \
            2   6  10   14
          */
+
         System.out.println("chud gaye guru");
+//          tree.preOrder(); //  shit works
+//            tree.inOrder();  //  shit works
+//        tree.postOrder(); //  shit works
+        System.out.println("Number 10 exists : "+tree.find(10) );
     }
 }
