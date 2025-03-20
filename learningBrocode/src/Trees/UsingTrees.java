@@ -33,6 +33,12 @@ public class UsingTrees {
 //          tree.preOrder(); //  shit works
 //            tree.inOrder();  //  shit works
 //        tree.postOrder(); //  shit works
+//        System.out.println(tree.height());  //if it works dun touch
+//        System.out.println(tree.min2());  //if it works dun touch
+        var resOrder=(tree.nodeAtDistance(2));
+        // System.out.println(resOrder.toString());
+        // damn storing levels in a arrayList cool
+        tree.levelOrder();
         System.out.println("Number 10 exists : "+tree.find(10) );
     }
 }

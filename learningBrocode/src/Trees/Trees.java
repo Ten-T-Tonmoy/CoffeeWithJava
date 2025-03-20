@@ -1,5 +1,7 @@
 package Trees;
 
+import java.util.ArrayList;
+
 public class Trees {
         //Tree (root)
         //Node (value,leftChild,rightChild)
@@ -88,7 +90,7 @@ public class Trees {
     //post-order: left, right, root      *leaf first
 
 
-    // */
+    //  Depth first traversals
     public  void  preOrder(){
         preOrder(root);
     }
@@ -100,6 +102,8 @@ public class Trees {
         preOrder(root.leftChild);
         preOrder(root.rightChild);
     }
+
+
     public void inOrder(){
         inOrder(root);
     }
@@ -112,6 +116,7 @@ public class Trees {
 
     }
 
+
     public void postOrder(){
         postOrder(root);
     }
@@ -121,6 +126,92 @@ public class Trees {
         postOrder(root.leftChild);
         postOrder(root.rightChild);
         System.out.println(root.value);
+    }
+
+    /*
+    * For heigh of a tree we can use
+    * 1+max(height(L),height(R)) ==>recursive shits
+    * post order used to calculate height
+    * since post order starts from leaves
+    *
+    * */
+
+    public int height(){
+
+        return height(root);
+    }
+    private int height(Node root){
+        if(root==null)
+            return -1;
+
+        if( root.leftChild == null && root.rightChild==null)
+            return 0;
+        return 1+Math.max(
+                height(root.leftChild),
+                height(root.rightChild));
+    }
+
+    private boolean isLeaf (Node root){
+        return root.leftChild == null && root.rightChild==null;
+    }
+
+    //in BST leftmost leaf is the min
+    public int min2(){
+        return min2(root); //O(logN)
+    }
+    private int min2(Node root){
+        if(root== null)
+            throw new IllegalStateException();
+
+        var current=root;
+        var last=current;
+        while (current!=null){
+            last=current;
+            current=current.leftChild;
+        }
+        return last.value;
+    }
+
+    //basically this is for bin tree
+    public int min(){
+        return min(root);
+    }
+    private int min (Node root){
+        //gotta use postOrder from leaves to root
+        if(isLeaf(root))
+            return root.value;
+        var left=min(root.leftChild);
+        var right=min(root.rightChild);
+
+        return Math.min(Math.min(left,right),root.value);
+
+    }
+
+
+    public ArrayList<Integer> nodeAtDistance(int dist){
+        var list=new ArrayList<Integer>();
+        nodeAtDistance(root,dist,list);
+        return list;
+    }
+    private void nodeAtDistance(Node root,int dist,ArrayList<Integer> list ){
+        if(root==null)
+            return;
+        if(dist==0){
+            list.add(root.value);
+            return;
+        }
+        //mainly setting up a limiter to stop
+        nodeAtDistance(root.leftChild,dist-1,list);
+        nodeAtDistance(root.rightChild,dist-1,list);
+    }
+
+
+    //Depth first or Level order traversals
+    public void levelOrder(){
+        for(var i=0;i<=height();i++){
+            var list=nodeAtDistance(i);
+            System.out.println(list.toString());
+        }
     }
 
     public static void main(String[] arg){
