@@ -134,5 +134,27 @@ public class LinkedList {
         return  arr;
     }
 
+    public void reverse(){
+        //-----------------important shit------------------
+        //just gonna change the sequence
+        var prev=first;
+        var cur=first.next;
+        last=first;
+        last.next=null;
+        while (cur!=null){
+            //next will be cur and cur will be prev
+            var next=cur.next;//storing next
+            cur.next=prev;
+            prev=cur;
+            cur=next;
+            //10->20->30->40
+            //p <- c <- n
+            //    p   c   n
+        }
+        first=prev;//when ends prev will reach there
+
+    }
+
+
 
 }

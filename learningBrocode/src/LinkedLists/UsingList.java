@@ -15,12 +15,16 @@ public class UsingList {
         list.deleteLast();
         System.out.println("Size of the LL is : "+list.size());
         System.out.println("Index of 11 is : "+test);
+        //damn Arrays.toString shiiis
         var arrayed = list.toArray();
         System.out.println(Arrays.toString(arrayed));
-        //damn Arrays.toString shiiis
         list.addlast(17);
 
+        list.reverse();
+        var arrayed2 = list.toArray();
+        System.out.println(Arrays.toString(arrayed2));
         System.out.println("Size of the LL is : "+list.size());
         java.util.LinkedList<String> x=new java.util.LinkedList<>();
+
     }
 }
