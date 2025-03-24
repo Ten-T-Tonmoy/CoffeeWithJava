@@ -15,5 +15,39 @@ package AVL_Tress;
  *
  * */
 public class avlTree {
+    private class avlNode{
+        private int val;
+        private avlNode leftChild;
+        private avlNode rightChild;
+
+        public avlNode(int value){
+            this.val=value;
+        }
+
+        //overRide keyword does shits fr
+        @Override
+        public String toSring(){
+            return "Value = "+this.val;
+        }
+    }
+
+    private avlNode root;
+    public void insert(int val){
+        root=insert(root,val);
+
+    }
+    private  avlNode insert(avlNode root,int valx){
+        if(root==null)
+            return new avlNode(valx);
+
+        if(valx<root.val){
+            root.leftChild=(root.leftChild,valx);
+        }
+        else{
+            root.rightChild = (root.rightChild,valx);
+        }
+
+    return root;
+    }
 
 }
