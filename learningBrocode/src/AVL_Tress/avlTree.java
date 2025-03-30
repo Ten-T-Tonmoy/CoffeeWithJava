@@ -4,6 +4,7 @@ package AVL_Tress;
 // also Red-black tree, B-trees,2-3 trees are self balancing
 
 
+import java.util.Map;
 
 /**
  * main mechanism is to rotate
@@ -19,6 +20,7 @@ public class avlTree {
         private int val;
         private avlNode leftChild;
         private avlNode rightChild;
+        private int height;
 
         public avlNode(int value){
             this.val=value;
@@ -26,7 +28,7 @@ public class avlTree {
 
         //overRide keyword does shits fr
         @Override
-        public String toSring(){
+        public String toString(){
             return "Value = "+this.val;
         }
     }
@@ -41,13 +43,55 @@ public class avlTree {
             return new avlNode(valx);
 
         if(valx<root.val){
-            root.leftChild=(root.leftChild,valx);
+            root.leftChild=insert(root.leftChild,valx);
         }
         else{
-            root.rightChild = (root.rightChild,valx);
+            root.rightChild = insert(root.rightChild,valx);
         }
+        root.height= Math.max(nodeHeight(root.leftChild),
+                nodeHeight(root.rightChild))+1;
+        //yea get it -1+1=0 for base
+        balance(root);
 
     return root;
+    }
+
+    private void balance(avlNode node){
+        //balance factor
+        //if bf>1: print("left Heavy")
+        //if bf<-1: print("right Heavy")
+        var bf=balanceFactor(node);
+
+        if(leftHeavy(node)){
+            if(balanceFactor(node.leftChild)<0){
+                //left rotation time
+            }
+            //right rotation is default
+        } else if (rightHeavy(node)) {
+            if(balanceFactor(node.rightChild)>0){
+                //right rotation time
+            }
+            //left rotation by default
+        }
+
+    }
+    private boolean leftHeavy(avlNode node){
+        return balanceFactor(node)>1;
+    }
+    private boolean rightHeavy(avlNode node){
+        return balanceFactor(node)<-1;
+    }
+
+
+    private  int balanceFactor(avlNode node){
+        return node==null ? 0 :nodeHeight(root.leftChild)
+                -nodeHeight(root.rightChild);
+
+    }
+    private  int nodeHeight(avlNode node){
+        if(node==null)
+            return -1;
+        return node.height;
     }
 
 }
