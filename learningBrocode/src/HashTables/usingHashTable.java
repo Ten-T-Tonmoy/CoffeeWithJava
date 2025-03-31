@@ -17,9 +17,12 @@ public class usingHashTable {
         // tryinMap.containsValue("abcd"); //runs on O(n) yk why
         // map.entrySet() =>key,value pair  and keySet=>only key
 
-
-
-        System.out.println(tryinMap.toString());
+        hashTable selfmap=new hashTable();
+        selfmap.put(43,"kremlin");
+        selfmap.put(12,"krawd");
+        selfmap.put(5,"collison");
+        selfmap.put(10,"collided");
+        System.out.println(selfmap.get(10));
 
     }
 }

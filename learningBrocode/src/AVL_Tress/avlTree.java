@@ -75,6 +75,12 @@ public class avlTree {
         }
 
     }
+    private avlNode leftRotate(avlNode root){
+        var newRoot=root.rightChild;
+        root.rightChild=newRoot.leftChild;
+        return newRoot;
+    }
+
     private boolean leftHeavy(avlNode node){
         return balanceFactor(node)>1;
     }
@@ -83,11 +89,13 @@ public class avlTree {
     }
 
 
+
     private  int balanceFactor(avlNode node){
         return node==null ? 0 :nodeHeight(root.leftChild)
                 -nodeHeight(root.rightChild);
 
     }
+
     private  int nodeHeight(avlNode node){
         if(node==null)
             return -1;
