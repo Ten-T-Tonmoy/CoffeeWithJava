@@ -1,7 +1,9 @@
 import java.util.Scanner;
 
 public class syntax {
-    public static void main(String[] args){
+    //this thing was primary entry point
+    //rename if need ofc talking to myself
+    public static void Submain(String[] args){
         //well comments are same anyways
         System.out.println("curse u griffith");
         //umm yea does shit println and print
